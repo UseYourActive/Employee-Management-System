@@ -44,17 +44,17 @@ public class EmployeeResponseDTO {
 
     @Schema(description = "Contact information of the employee.")
     @NotNull(message = "Contact information cannot be null")
-    private ContactInformationDTO contactInformation;
+    private ContactInformationResponseDTO contactInformation;
 
     @Schema(description = "Salary details of the employee.")
     @NotNull(message = "Salary details cannot be null")
-    private SalaryDTO salary;
+    private SalaryResponseDTO salary;
 
     @Schema(description = "Creation details of the employee.")
     @NotNull(message = "Creation details cannot be null")
-    private CreationDTO creation;
+    private CreationResponseDTO creation;
 
     @Schema(description = "Employee details.")
     @NotNull(message = "Employee details cannot be null")
-    private EmployeeDetailsDTO employeeDetails;
+    private EmployeeDetailsResponseDTO employeeDetails;
 }

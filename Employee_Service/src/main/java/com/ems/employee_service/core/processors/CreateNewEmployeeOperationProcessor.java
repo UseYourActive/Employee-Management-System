@@ -27,12 +27,12 @@ import java.util.Date;
 public class CreateNewEmployeeOperationProcessor implements CreateNewEmployeeOperation {
     private final EmployeeRepository employeeRepository;
     private final CreateNewEmployeeMapper employeeMapper;
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
+    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
     @Override
     public CreateNewEmployeeResponse process(final CreateNewEmployeeRequest request) {
-        log.info("Processing request to create a new employee");
-
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        log.info("Processing request to create a new employee for {}", request.getFirstName());
 
         Employee employee = Employee.builder()
                 .firstName(request.getFirstName())

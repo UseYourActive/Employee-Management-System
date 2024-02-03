@@ -1,10 +1,10 @@
 package com.ems.employee_service.api.operations.find.byid;
 
 import com.ems.employee_service.api.base.OperationOutput;
-import com.ems.employee_service.api.operations.ContactInformationDTO;
-import com.ems.employee_service.api.operations.CreationDTO;
-import com.ems.employee_service.api.operations.EmployeeDetailsDTO;
-import com.ems.employee_service.api.operations.SalaryDTO;
+import com.ems.employee_service.api.operations.ContactInformationResponseDTO;
+import com.ems.employee_service.api.operations.CreationResponseDTO;
+import com.ems.employee_service.api.operations.EmployeeDetailsResponseDTO;
+import com.ems.employee_service.api.operations.SalaryResponseDTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -47,17 +47,17 @@ public class FindByIdEmployeeResponse implements OperationOutput {
 
     @Schema(description = "Contact information of the employee.")
     @NotNull(message = "Contact information cannot be null")
-    private ContactInformationDTO contactInformation;
+    private ContactInformationResponseDTO contactInformation;
 
     @Schema(description = "Salary details of the employee.")
     @NotNull(message = "Salary details cannot be null")
-    private SalaryDTO salary;
+    private SalaryResponseDTO salary;
 
     @Schema(description = "Creation details of the employee.")
     @NotNull(message = "Creation details cannot be null")
-    private CreationDTO creation;
+    private CreationResponseDTO creation;
 
     @Schema(description = "Employee details.")
     @NotNull(message = "Employee details cannot be null")
-    private EmployeeDetailsDTO employeeDetails;
+    private EmployeeDetailsResponseDTO employeeDetails;
 }

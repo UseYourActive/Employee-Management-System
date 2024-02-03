@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SalaryDTO {
+public class SalaryResponseDTO {
     @Schema(description = "Amount of the salary.")
     @NotNull(message = "Amount cannot be null")
     @ValidBigDecimal

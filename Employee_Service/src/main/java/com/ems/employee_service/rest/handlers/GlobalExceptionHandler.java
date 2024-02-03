@@ -26,7 +26,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(EmployeeNotFoundException.class)
-    public ResponseEntity<String> handleBookNotFoundException(EmployeeNotFoundException e) {
+    public ResponseEntity<String> handleEmployeeNotFoundException(EmployeeNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found! " + e.getMessage());
     }
 

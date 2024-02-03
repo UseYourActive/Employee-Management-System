@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ContactInformationDTO {
+public class ContactInformationResponseDTO {
     @Schema(description = "Email address of the employee.")
     @Email(message = "Invalid email format")
     private String email;

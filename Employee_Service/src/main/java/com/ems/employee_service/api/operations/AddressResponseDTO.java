@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AddressDTO {
+public class AddressResponseDTO {
     @Schema(description = "Street of the address.")
     @NotBlank(message = "Street cannot be blank")
     private String street;

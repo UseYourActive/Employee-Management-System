@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreationDTO {
+public class CreationResponseDTO {
     @Schema(description = "Date when the record was created.")
     @NotNull(message = "Created at date cannot be null")
     @ValidDate

@@ -6,6 +6,9 @@ import com.ems.employee_service.api.operations.create.CreateNewEmployeeResponse;
 import com.ems.employee_service.api.operations.delete.DeleteEmployeeOperation;
 import com.ems.employee_service.api.operations.delete.DeleteEmployeeRequest;
 import com.ems.employee_service.api.operations.delete.DeleteEmployeeResponse;
+import com.ems.employee_service.api.operations.edit.EditEmployeeOperation;
+import com.ems.employee_service.api.operations.edit.EditEmployeeRequest;
+import com.ems.employee_service.api.operations.edit.EditEmployeeResponse;
 import com.ems.employee_service.api.operations.find.all.FindAllEmployeesOperation;
 import com.ems.employee_service.api.operations.find.all.FindAllEmployeesRequest;
 import com.ems.employee_service.api.operations.find.all.FindAllEmployeesResponse;
@@ -41,6 +44,7 @@ public class EmployeeController {
     private final FindAllEmployeesOperation findAllEmployeesOperation;
     private final CreateNewEmployeeOperation createNewEmployeeOperation;
     private final DeleteEmployeeOperation deleteEmployeeOperation;
+    private final EditEmployeeOperation editEmployeeOperation;
 
     //region GET
     @Transactional
@@ -93,17 +97,17 @@ public class EmployeeController {
     //endregion
 
     //region PUT
-//    @Transactional
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "200", description = "Successfully edited a employee."),
-//            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content(mediaType = "text/html"))
-//    })
-//    @Operation(description = "From the users request finds an already existing in the database employee and updates it.",
-//            summary = "Edits a employee.")
-//    @PatchMapping(path = "/edit")
-//    public ResponseEntity<EditFullBookResponse> editEmployee(@Valid @RequestBody EditFullBookRequest request) {
-//        return new ResponseEntity<>(editFullBookOperation.process(request), HttpStatus.OK);
-//    }
+    @Transactional
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully edited a employee."),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content(mediaType = "text/html"))
+    })
+    @Operation(description = "From the users request finds an already existing in the database employee and updates it.",
+            summary = "Edits a employee.")
+    @PatchMapping(path = "/edit")
+    public ResponseEntity<EditEmployeeResponse> editEmployee(@Valid @RequestBody EditEmployeeRequest request) {
+        return new ResponseEntity<>(editEmployeeOperation.process(request), HttpStatus.OK);
+    }
     //endregion
 
     //region DELETE

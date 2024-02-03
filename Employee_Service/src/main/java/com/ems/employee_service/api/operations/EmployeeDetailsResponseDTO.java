@@ -13,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EmployeeDetailsDTO {
+public class EmployeeDetailsResponseDTO {
     @Schema(description = "Date of birth of the employee.")
     @NotNull(message = "Date of birth cannot be null")
     @ValidDate
@@ -26,7 +26,7 @@ public class EmployeeDetailsDTO {
 
     @Schema(description = "Address of the employee.")
     @NotNull(message = "Address cannot be null")
-    private AddressDTO address;
+    private AddressResponseDTO address;
 
     @Schema(description = "Marital status of the employee.")
     @NotNull(message = "Marital status cannot be null")
