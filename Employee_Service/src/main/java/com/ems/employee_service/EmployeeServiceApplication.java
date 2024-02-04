@@ -14,10 +14,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @EntityScan(basePackages = {"com.ems.employee_service.persistence.entities"})
 @EnableJpaRepositories(basePackages = {"com.ems.employee_service.persistence.repositories"})
-@EnableFeignClients()
+@EnableFeignClients
 @OpenAPIDefinition(
         info = @Info(
                 title = "Employee Management Service Documentation",
