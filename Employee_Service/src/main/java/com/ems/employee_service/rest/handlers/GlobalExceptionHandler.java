@@ -38,23 +38,23 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found! " + e.getMessage());
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseBody
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                                  HttpHeaders headers,
-                                                                  HttpStatusCode status,
-                                                                  WebRequest request) {
-        log.error("Validation error", ex);
-        Map<String, String> errors = new HashMap<>();
-        List<ObjectError> listOfErrors = ex.getBindingResult().getAllErrors();
-
-        listOfErrors.forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String message = error.getDefaultMessage();
-            errors.put(fieldName, message);
-        });
-
-        return ResponseEntity.badRequest().body(errors);
-    }
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    @ResponseBody
+//    @Override
+//    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+//                                                                  HttpHeaders headers,
+//                                                                  HttpStatusCode status,
+//                                                                  WebRequest request) {
+//        log.error("Validation error", ex);
+//        Map<String, String> errors = new HashMap<>();
+//        List<ObjectError> listOfErrors = ex.getBindingResult().getAllErrors();
+//
+//        listOfErrors.forEach((error) -> {
+//            String fieldName = ((FieldError) error).getField();
+//            String message = error.getDefaultMessage();
+//            errors.put(fieldName, message);
+//        });
+//
+//        return ResponseEntity.badRequest().body(errors);
+//    }
 }
