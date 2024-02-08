@@ -75,10 +75,15 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
 
+    //
     implementation group: 'io.micrometer', name: 'micrometer-observation', version: '1.12.2'
     implementation group: 'io.micrometer', name: 'micrometer-tracing-bridge-brave', version: '1.2.2'
     implementation group: 'io.zipkin.reporter2', name: 'zipkin-reporter-brave', version: '3.2.1'
     testImplementation group: 'io.github.openfeign', name: 'feign-micrometer', version: '13.2'
+
+    // Circuit Breaker
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-circuitbreaker-resilience4j', version: '3.1.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '3.2.2'
 
     //endregion
 }
