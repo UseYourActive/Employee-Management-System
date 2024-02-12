@@ -1,0 +1,6 @@
+package com.ems.employee_service.api.operations.find.bymaritalstatus;
+
+import com.ems.employee_service.api.base.OperationProcessor;
+
+public interface FindEmployeesByEmployeeDetailsMaritalStatusOperation extends OperationProcessor<FindEmployeesByEmployeeDetailsMaritalStatusResponse, FindEmployeesByEmployeeDetailsMaritalStatusRequest> {
+}

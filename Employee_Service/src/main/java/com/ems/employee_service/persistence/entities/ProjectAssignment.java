@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Table(name = "project_assignments")
@@ -20,11 +21,11 @@ public class ProjectAssignment {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+    @OneToMany
+    @JoinColumn(name = "employees", nullable = false)
+    private List<Employee> employees;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 

@@ -20,25 +20,15 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-
-    @Column(name = "middle_name", nullable = false)
-    private String middleName;
-
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
-
-    @Column(name = "unique_civil_number", nullable = false, unique = true)
-    private String uniqueCivilNumber;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "designation", nullable = false)
-    private Designation designation;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "department", nullable = false)
-    private Department department;
+    @Embedded
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
+    @AttributeOverrides({
+            @AttributeOverride(name = "firstName", column = @Column(name = "first_name")),
+            @AttributeOverride(name = "middleName", column = @Column(name = "middle_name")),
+            @AttributeOverride(name = "lastName", column = @Column(name = "last_name")),
+            @AttributeOverride(name = "uniqueCivilNumber", column = @Column(name = "unique_civil_number"))
+    })
+    private PersonalInformation personalInformation;
 
     @Embedded
     @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
@@ -47,6 +37,24 @@ public class Employee {
             @AttributeOverride(name = "phoneNumber", column = @Column(name = "phone_number"))
     })
     private ContactInformation contactInformation;
+
+    @Embedded
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
+    @AttributeOverrides({
+            @AttributeOverride(name = "dateOfBirth", column = @Column(name = "date_of_birth")),
+            @AttributeOverride(name = "gender", column = @Column(name = "gender")),
+            @AttributeOverride(name = "address", column = @Column(name = "address")),
+            @AttributeOverride(name = "maritalStatus", column = @Column(name = "marital_status"))
+    })
+    private EmployeeDetails employeeDetails;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "designation", nullable = false)
+    private Designation designation;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "department", nullable = false)
+    private Department department;
 
     @Embedded
     @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
@@ -63,14 +71,4 @@ public class Employee {
             @AttributeOverride(name = "lastModifiedAt", column = @Column(name = "last_modified_at"))
     })
     private Creation creation;
-
-    @Embedded
-    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
-    @AttributeOverrides({
-            @AttributeOverride(name = "dateOfBirth", column = @Column(name = "date_of_birth")),
-            @AttributeOverride(name = "gender", column = @Column(name = "gender")),
-            @AttributeOverride(name = "address", column = @Column(name = "address")),
-            @AttributeOverride(name = "maritalStatus", column = @Column(name = "marital_status"))
-    })
-    private EmployeeDetails employeeDetails;
 }

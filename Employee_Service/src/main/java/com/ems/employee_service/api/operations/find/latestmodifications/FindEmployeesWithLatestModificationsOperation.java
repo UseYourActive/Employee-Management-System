@@ -1,0 +1,6 @@
+package com.ems.employee_service.api.operations.find.latestmodifications;
+
+import com.ems.employee_service.api.base.OperationProcessor;
+
+public interface FindEmployeesWithLatestModificationsOperation extends OperationProcessor<FindEmployeesWithLatestModificationsResponse, FindEmployeesWithLatestModificationsRequest> {
+}

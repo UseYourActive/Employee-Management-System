@@ -35,10 +35,12 @@ public class CreateNewEmployeeOperationProcessor implements CreateNewEmployeeOpe
         log.info("Processing request to create a new employee for {}", request.getFirstName());
 
         Employee employee = Employee.builder()
-                .firstName(request.getFirstName())
-                .middleName(request.getMiddleName())
-                .lastName(request.getLastName())
-                .uniqueCivilNumber(request.getUniqueCivilNumber())
+                .personalInformation(PersonalInformation.builder()
+                        .firstName(request.getFirstName())
+                        .middleName(request.getMiddleName())
+                        .lastName(request.getLastName())
+                        .uniqueCivilNumber(request.getUniqueCivilNumber())
+                        .build())
                 .designation(Designation.valueOf(request.getDesignation()))
                 .department(Department.valueOf(request.getDepartment()))
                 .contactInformation(ContactInformation.builder()

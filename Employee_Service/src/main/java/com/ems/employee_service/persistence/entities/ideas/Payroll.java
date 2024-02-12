@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.math.BigDecimal;
 import java.time.Month;
 
-@Entity
+//@Entity
 public class Payroll {
 
     @Id

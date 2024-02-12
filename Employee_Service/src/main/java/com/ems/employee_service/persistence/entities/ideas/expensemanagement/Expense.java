@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
+//@Entity
 public class Expense {
 
     @Id

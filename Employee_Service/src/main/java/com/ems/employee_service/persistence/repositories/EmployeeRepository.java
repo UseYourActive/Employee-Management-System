@@ -18,7 +18,7 @@ import java.util.UUID;
 public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
     //region Salary related
     @Query(value = "SELECT * FROM employees e ORDER BY e.salary_amount DESC LIMIT 3", nativeQuery = true)
-    List<Employee> findTop3ByOrderBySalaryAmountDesc();
+    List<Employee> findTopThreeByOrderBySalaryAmountDesc();
 
     @Query("SELECT e FROM Employee e WHERE e.salary.amount BETWEEN :minSalary AND :maxSalary")
     List<Employee> findEmployeesBySalaryRange(@Param("minSalary") BigDecimal minSalary, @Param("maxSalary") BigDecimal maxSalary);
@@ -34,21 +34,21 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
     //endregion
 
     //region Project related
-    @Query("SELECT e FROM Employee e WHERE NOT EXISTS (SELECT pa FROM ProjectAssignment pa WHERE pa.employee.id = e.id)")
-    List<Employee> findEmployeesWithNoProjectAssignments();
-
-    @Query("SELECT e FROM Employee e JOIN ProjectAssignment pa ON e.id = pa.employee.id WHERE pa.project.id = :projectId")
-    List<Employee> findEmployeesByProjectAssignment(@Param("projectId") UUID projectId);
+//    @Query("SELECT e FROM Employee e WHERE NOT EXISTS (SELECT pa FROM ProjectAssignment pa WHERE pa.employee.id = e.id)")
+//    List<Employee> findEmployeesWithNoProjectAssignments();
+//
+//    @Query("SELECT e FROM Employee e JOIN ProjectAssignment pa ON e.id = pa.employee.id WHERE pa.project.id = :projectId")
+//    List<Employee> findEmployeesByProjectAssignment(@Param("projectId") UUID projectId);
     //endregion
 
     //region Name related
-    @Query("SELECT e FROM Employee e WHERE e.firstName = :firstName")
+    @Query("SELECT e FROM Employee e WHERE e.personalInformation.firstName = :firstName")
     List<Employee> findEmployeesByFirstName(@Param("firstName") String firstName);
 
-    @Query("SELECT e FROM Employee e WHERE e.lastName = :lastName")
+    @Query("SELECT e FROM Employee e WHERE e.personalInformation.lastName = :lastName")
     List<Employee> findEmployeesByLastName(@Param("lastName") String lastName);
 
-    @Query("SELECT e FROM Employee e WHERE e.firstName = :firstName AND e.lastName = :lastName")
+    @Query("SELECT e FROM Employee e WHERE e.personalInformation.firstName = :firstName AND e.personalInformation.lastName = :lastName")
     List<Employee> findEmployeesByFirstNameAndLastName(
             @Param("firstName") String firstName,
             @Param("lastName") String lastName
@@ -70,8 +70,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
     @Query("SELECT e FROM Employee e WHERE e.contactInformation.phoneNumber = :phoneNumber")
     Optional<Employee> findEmployeeByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 
-    @Query("SELECT e FROM Employee e WHERE e.uniqueCivilNumber = :ucn")
-    Optional<Employee> findEmployeeByUCN(@Param("ucn") String ucn);
+    @Query("SELECT e FROM Employee e WHERE e.personalInformation.uniqueCivilNumber = :uniqueCivilianNumber")
+    Optional<Employee> findEmployeeByUniqueCivilianNumber(@Param("uniqueCivilianNumber") String uniqueCivilianNumber);
 
     @Query("SELECT e FROM Employee e WHERE e.employeeDetails.dateOfBirth BETWEEN :startDate AND :endDate")
     List<Employee> findEmployeesByDateOfBirthBetween(
@@ -105,13 +105,13 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
     @Query("SELECT e FROM Employee e WHERE e.employeeDetails.address.city = :city")
     List<Employee> findEmployeesByCity(@Param("city") String city);
 
-    @Query("SELECT e FROM Employee e JOIN ProjectAssignment pa ON e.id = pa.employee.id " +
-            "WHERE pa.project.id = :projectId AND pa.startDate BETWEEN :startDate AND :endDate")
-    List<Employee> findEmployeesByProjectAssignmentAndDateRange(
-            @Param("projectId") UUID projectId,
-            @Param("startDate") Date startDate,
-            @Param("endDate") Date endDate
-    );
+//    @Query("SELECT e FROM Employee e JOIN ProjectAssignment pa ON e.id = pa.employees " +
+//            "WHERE pa.project.id = :projectId AND pa.startDate BETWEEN :startDate AND :endDate")
+//    List<Employee> findEmployeesByProjectAssignmentAndDateRange(
+//            @Param("projectId") UUID projectId,
+//            @Param("startDate") Date startDate,
+//            @Param("endDate") Date endDate
+//    );
 
     @Query("SELECT e FROM Employee e WHERE e.employeeDetails.address.zipCode = :zipCode")
     List<Employee> findEmployeesByZipCode(@Param("zipCode") String zipCode);
