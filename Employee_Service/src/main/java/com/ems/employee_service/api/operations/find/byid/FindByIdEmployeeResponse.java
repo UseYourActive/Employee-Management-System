@@ -1,10 +1,7 @@
 package com.ems.employee_service.api.operations.find.byid;
 
 import com.ems.employee_service.api.base.OperationOutput;
-import com.ems.employee_service.api.operations.ContactInformationResponseDTO;
-import com.ems.employee_service.api.operations.CreationResponseDTO;
-import com.ems.employee_service.api.operations.EmployeeDetailsResponseDTO;
-import com.ems.employee_service.api.operations.SalaryResponseDTO;
+import com.ems.employee_service.api.operations.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,21 +18,9 @@ public class FindByIdEmployeeResponse implements OperationOutput {
     @NotNull(message = "Employee ID cannot be null")
     private String id;
 
-    @Schema(description = "First name of the employee.")
-    @NotBlank(message = "First name cannot be blank")
-    private String firstName;
-
-    @Schema(description = "Middle name of the employee.")
-    @NotBlank(message = "Middle name cannot be blank")
-    private String middleName;
-
-    @Schema(description = "Last name of the employee.")
-    @NotBlank(message = "Last name cannot be blank")
-    private String lastName;
-
-    @Schema(description = "Unique Civil Number of the employee.")
-    @NotBlank(message = "Unique Civil Number cannot be blank")
-    private String uniqueCivilNumber;
+    @Schema(description = "Personal information of the employee.")
+    @NotBlank(message = "Personal information cannot be blank")
+    private PersonalInformationResponseDTO personalInformation;
 
     @Schema(description = "Designation of the employee.")
     @NotBlank(message = "Designation cannot be blank")

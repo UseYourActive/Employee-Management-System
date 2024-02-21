@@ -122,7 +122,9 @@ public class EmployeeController {
             summary = "Deletes a employee.")
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<DeleteEmployeeResponse> deleteEmployee(@PathVariable("id") @UUID String input) {
-        DeleteEmployeeRequest request = new DeleteEmployeeRequest();
+        DeleteEmployeeRequest request = DeleteEmployeeRequest.builder()
+                .id(input)
+                .build();
 
         return new ResponseEntity<>(deleteEmployeeOperation.process(request), HttpStatus.OK);
     }

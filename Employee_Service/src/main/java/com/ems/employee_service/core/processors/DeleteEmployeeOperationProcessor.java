@@ -20,16 +20,18 @@ public class DeleteEmployeeOperationProcessor implements DeleteEmployeeOperation
 
     @Override
     public DeleteEmployeeResponse process(final DeleteEmployeeRequest request) {
-        log.info("Processing request to delete an employee with ID: {}", request.getId());
+        String id = request.getId();
 
-        Employee employee = employeeRepository.findById(UUID.fromString(request.getId()))
+        log.info("Processing request to delete an employee with ID: {}", id);
+
+        Employee employee = employeeRepository.findById(UUID.fromString(id))
                 .orElseThrow(() -> {
-                    log.warn("Employee with ID {} not found. Unable to delete.", request.getId());
+                    log.warn("Employee with ID {} not found. Unable to delete.", id);
                     return new EmployeeNotFoundException("Employee with given id has not been found");
                 });
 
         employeeRepository.delete(employee);
-        log.info("Employee with ID {} deleted successfully", request.getId());
+        log.info("Employee with ID {} deleted successfully", id);
 
         DeleteEmployeeResponse response = DeleteEmployeeResponse.builder()
                 .successfullyDeletedEmployee(Boolean.TRUE)

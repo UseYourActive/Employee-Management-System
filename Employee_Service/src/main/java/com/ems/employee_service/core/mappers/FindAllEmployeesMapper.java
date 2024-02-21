@@ -11,10 +11,10 @@ public interface FindAllEmployeesMapper {
     FindAllEmployeesMapper INSTANCE = Mappers.getMapper(FindAllEmployeesMapper.class);
 
     @Mapping(source = "id", target = "id")
-    @Mapping(source = "personalInformation.firstName", target = "firstName")
-    @Mapping(source = "personalInformation.middleName", target = "middleName")
-    @Mapping(source = "personalInformation.lastName", target = "lastName")
-    @Mapping(source = "personalInformation.uniqueCivilNumber", target = "uniqueCivilNumber")
+    @Mapping(source = "personalInformation.firstName", target = "personalInformation.firstName")
+    @Mapping(source = "personalInformation.middleName", target = "personalInformation.middleName")
+    @Mapping(source = "personalInformation.lastName", target = "personalInformation.lastName")
+    @Mapping(source = "personalInformation.uniqueCivilNumber", target = "personalInformation.uniqueCivilNumber")
     @Mapping(source = "designation", target = "designation")
     @Mapping(source = "department", target = "department")
     @Mapping(source = "contactInformation.phoneNumber", target = "contactInformation.phoneNumber")

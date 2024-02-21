@@ -1,11 +1,9 @@
 package com.ems.employee_service.api.operations.create;
 
 import com.ems.employee_service.api.base.OperationOutput;
-import com.ems.employee_service.api.operations.ContactInformationResponseDTO;
-import com.ems.employee_service.api.operations.CreationResponseDTO;
-import com.ems.employee_service.api.operations.EmployeeDetailsResponseDTO;
-import com.ems.employee_service.api.operations.SalaryResponseDTO;
+import com.ems.employee_service.api.operations.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -17,17 +15,9 @@ public class CreateNewEmployeeResponse implements OperationOutput {
     @Schema(description = "Unique identification number of the employee.")
     private String id;
 
-    @Schema(description = "First name of the employee.")
-    private String firstName;
-
-    @Schema(description = "Middle name of the employee.")
-    private String middleName;
-
-    @Schema(description = "Last name of the employee.")
-    private String lastName;
-
-    @Schema(description = "Unique Civil Number of the employee.")
-    private String uniqueCivilNumber;
+    @Schema(description = "Personal information of the employee.")
+    @NotBlank(message = "Personal information cannot be blank")
+    private PersonalInformationResponseDTO personalInformation;
 
     @Schema(description = "Designation of the employee.")
     private String designation;

@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class MessageController {
 
-    @Value("${spring.boot.message}")
-    private String message;
-
-    @GetMapping("/users/message")
-    public String message(){
-        return message;
-    }
+//    @Value("${spring.boot.message}")
+//    private String message;
+//
+//    @GetMapping("/users/message")
+//    public String message(){
+//        return message;
+//    }
 }
