@@ -1,15 +1,15 @@
-package com.ems.department_service.core.mappers;
+package com.ems.department_service.core.converters;
 
-import com.ems.department_service.api.operations.find.byid.FindByIdDepartmentResponse;
+import com.ems.department_service.api.operations.DepartmentResponseDTO;
 import com.ems.department_service.persistence.entities.Department;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FindByIdDepartmentMapper implements Converter<Department, FindByIdDepartmentResponse> {
+public class FindAllDepartmentsMapper implements Converter<Department, DepartmentResponseDTO> {
     @Override
-    public FindByIdDepartmentResponse convert(Department source) {
-        return FindByIdDepartmentResponse.builder()
+    public DepartmentResponseDTO convert(Department source) {
+        return DepartmentResponseDTO.builder()
                 .id(String.valueOf(source.getId()))
                 .email(source.getEmail())
                 .name(source.getName())

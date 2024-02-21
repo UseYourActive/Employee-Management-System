@@ -1,4 +1,4 @@
-package com.ems.department_service.core.mappers;
+package com.ems.department_service.core.converters;
 
 import com.ems.department_service.api.operations.create.CreateNewDepartmentResponse;
 import com.ems.department_service.persistence.entities.Department;

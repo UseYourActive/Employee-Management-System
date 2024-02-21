@@ -3,7 +3,7 @@ package com.ems.department_service.core.processors;
 import com.ems.department_service.api.operations.create.CreateNewDepartmentOperation;
 import com.ems.department_service.api.operations.create.CreateNewDepartmentRequest;
 import com.ems.department_service.api.operations.create.CreateNewDepartmentResponse;
-import com.ems.department_service.core.mappers.CreateNewDepartmentMapper;
+import com.ems.department_service.core.converters.CreateNewDepartmentMapper;
 import com.ems.department_service.persistence.entities.Department;
 import com.ems.department_service.persistence.repositories.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @Service
 public class CreateNewDepartmentOperationProcessor implements CreateNewDepartmentOperation {
     private final DepartmentRepository departmentRepository;
-    private final CreateNewDepartmentMapper mapper;
+    private final CreateNewDepartmentMapper converter;
 
     @Override
     public CreateNewDepartmentResponse process(final CreateNewDepartmentRequest request) {
@@ -39,7 +39,7 @@ public class CreateNewDepartmentOperationProcessor implements CreateNewDepartmen
 
         Department savedDepartment = departmentRepository.save(department);
 
-        CreateNewDepartmentResponse response = mapper.convert(savedDepartment);
+        CreateNewDepartmentResponse response = converter.convert(savedDepartment);
 
         return response;
     }

@@ -4,7 +4,7 @@ import com.ems.department_service.api.operations.DepartmentResponseDTO;
 import com.ems.department_service.api.operations.find.all.FindAllDepartmentsOperation;
 import com.ems.department_service.api.operations.find.all.FindAllDepartmentsRequest;
 import com.ems.department_service.api.operations.find.all.FindAllDepartmentsResponse;
-import com.ems.department_service.core.mappers.FindAllDepartmentsMapper;
+import com.ems.department_service.core.converters.FindAllDepartmentsMapper;
 import com.ems.department_service.persistence.entities.Department;
 import com.ems.department_service.persistence.repositories.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FindAllDepartmentsOperationProcessor implements FindAllDepartmentsOperation {
     private final DepartmentRepository departmentRepository;
-    private final FindAllDepartmentsMapper mapper;
+    private final FindAllDepartmentsMapper converter;
 
     @Override
     public FindAllDepartmentsResponse process(final FindAllDepartmentsRequest request) {
@@ -34,7 +34,7 @@ public class FindAllDepartmentsOperationProcessor implements FindAllDepartmentsO
         log.info("Found {} departments", allDepartmentsList.getTotalElements());
 
         List<DepartmentResponseDTO> departmentResponseDTOList = allDepartmentsList.stream()
-                .map(mapper::convert)
+                .map(converter::convert)
                 .toList();
         log.info("Mapped responses for all departments: {}", departmentResponseDTOList);
 

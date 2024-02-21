@@ -4,7 +4,7 @@ import com.ems.department_service.api.operations.find.byid.FindByIdDepartmentOpe
 import com.ems.department_service.api.operations.find.byid.FindByIdDepartmentRequest;
 import com.ems.department_service.api.operations.find.byid.FindByIdDepartmentResponse;
 import com.ems.department_service.core.exceptions.DepartmentNotFoundException;
-import com.ems.department_service.core.mappers.FindByIdDepartmentMapper;
+import com.ems.department_service.core.converters.FindByIdDepartmentMapper;
 import com.ems.department_service.persistence.entities.Department;
 import com.ems.department_service.persistence.repositories.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @Slf4j
 public class FindByIdDepartmentOperationProcessor implements FindByIdDepartmentOperation {
     private final DepartmentRepository departmentRepository;
-    private final FindByIdDepartmentMapper mapper;
+    private final FindByIdDepartmentMapper converter;
 
     @Override
     public FindByIdDepartmentResponse process(final FindByIdDepartmentRequest request) {
@@ -34,7 +34,7 @@ public class FindByIdDepartmentOperationProcessor implements FindByIdDepartmentO
 
         log.info("Department with ID {} found successfully", id);
 
-        FindByIdDepartmentResponse response = mapper.convert(department);
+        FindByIdDepartmentResponse response = converter.convert(department);
         log.info("Returning response for department with ID {}: {}", id, response);
 
         return response;
