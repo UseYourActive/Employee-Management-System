@@ -106,7 +106,7 @@ public class DepartmentController {
     @Operation(description = "From the users request finds an already existing in the database department and updates it.",
             summary = "Edits a department.")
     @PatchMapping(path = "/edit")
-    public ResponseEntity<EditFullDepartmentResponse> editEmployee(@Valid @RequestBody EditFullDepartmentRequest request) {
+    public ResponseEntity<EditFullDepartmentResponse> editDepartment(@Valid @RequestBody EditFullDepartmentRequest request) {
         return new ResponseEntity<>(editFullDepartmentOperation.process(request), HttpStatus.OK);
     }
     //endregion
