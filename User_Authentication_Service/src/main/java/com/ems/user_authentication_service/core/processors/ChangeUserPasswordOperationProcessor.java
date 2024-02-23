@@ -1,8 +1,8 @@
 package com.ems.user_authentication_service.core.processors;
 
-import com.ems.user_authentication_service.api.operations.changepassword.ChangeUserPasswordOperation;
-import com.ems.user_authentication_service.api.operations.changepassword.ChangeUserPasswordRequest;
-import com.ems.user_authentication_service.api.operations.changepassword.ChangeUserPasswordResponse;
+import com.ems.user_authentication_service.api.operations.change_password.ChangeUserPasswordOperation;
+import com.ems.user_authentication_service.api.operations.change_password.ChangeUserPasswordRequest;
+import com.ems.user_authentication_service.api.operations.change_password.ChangeUserPasswordResponse;
 import com.ems.user_authentication_service.core.exceptions.CurrentPasswordInvalidException;
 import com.ems.user_authentication_service.persistence.entities.Token;
 import com.ems.user_authentication_service.persistence.entities.User;
@@ -25,7 +25,9 @@ public class ChangeUserPasswordOperationProcessor implements ChangeUserPasswordO
     @Override
     public ChangeUserPasswordResponse process(final ChangeUserPasswordRequest request) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = this.userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email + " not valid"));
+
+        User user = this.userRepository.findUserByUsername(email)
+                .orElseThrow(() -> new UsernameNotFoundException(email + " not valid"));
 
         if (!this.passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
             throw new CurrentPasswordInvalidException();

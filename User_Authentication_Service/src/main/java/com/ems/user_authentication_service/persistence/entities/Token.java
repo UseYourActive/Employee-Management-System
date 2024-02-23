@@ -1,23 +1,36 @@
 package com.ems.user_authentication_service.persistence.entities;
 
+import com.ems.user_authentication_service.persistence.enums.TokenType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "invalidated_tokens")
-@Getter
-@NoArgsConstructor
+@Table(name = "tokens")
 @Builder
 @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(name = "token", unique = true)
     private String token;
+
+    @Enumerated(EnumType.STRING)
+    private TokenType tokenType = TokenType.BEARER;
+
+    @Column(name = "expired")
+    private boolean expired;
+
+    @Column(name = "revoked")
+    private boolean revoked;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }
