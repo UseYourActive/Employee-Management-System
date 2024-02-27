@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
+//@AllArgsConstructor
+//@Builder
 public class FindEmployeeByEmailResponse implements OperationOutput {
 }

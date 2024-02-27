@@ -23,8 +23,10 @@ public class FindEmployeeByEmailOperationProcessor implements FindEmployeeByEmai
         Employee employee = employeeRepository.findEmployeeByEmail(email)
                 .orElseThrow(() -> new EmployeeNotFoundException("Employee with such email doesn't exist"));
 
-        return FindEmployeeByEmailResponse.builder()
+//        return FindEmployeeByEmailResponse.builder()
+//
+//                .build();
 
-                .build();
+        return null;
     }
 }

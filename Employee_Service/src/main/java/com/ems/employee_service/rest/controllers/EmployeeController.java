@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @RefreshScope
 @Slf4j
+@CrossOrigin
 @RequestMapping(path = "/employees")
 public class EmployeeController {
     private final FindByIdEmployeeOperation findByIdEmployeeOperation;
