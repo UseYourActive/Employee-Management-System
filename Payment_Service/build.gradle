@@ -31,6 +31,13 @@ dependencies {
 
     //region Payment
     implementation group: 'com.stripe', name: 'stripe-java', version: '24.16.0'
+    implementation group: 'com.paypal.sdk', name: 'paypal-core', version: '1.7.2'
+    implementation group: 'com.paypal.sdk', name: 'rest-api-sdk', version: '1.14.0'
+
+    //endregion
+
+    //region UI
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '3.2.3'
     //endregion
 
     //region Database

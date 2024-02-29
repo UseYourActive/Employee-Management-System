@@ -1,8 +1,9 @@
 package com.ems.payment_service.rest.controllers;
 
-import com.ems.payment_service.api.operations.salary.SalaryOperation;
-import com.ems.payment_service.api.operations.salary.SalaryRequest;
-import com.ems.payment_service.api.operations.salary.SalaryResponse;
+import com.ems.payment_service.core.processors.PaypalService;
+import com.paypal.api.payments.Links;
+import com.paypal.api.payments.Payment;
+import com.paypal.base.rest.PayPalRESTException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -16,10 +17,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Tag(
         name = "Payment service",
@@ -32,17 +31,67 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RequestMapping(path = "/payment")
 public class PaymentController {
-    private final SalaryOperation salaryOperation;
-
 //    @Transactional
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "202", description = "Successfully gave a salary to an employee."),
-            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content(mediaType = "text/html"))
-    })
-    @Operation(description = "Provided the employees debit card details will provide him with his deserved salary.",
-            summary = "Give salary to an employee.")
-    @PostMapping(path = "/salary")
-    public ResponseEntity<SalaryResponse> giveSalary(@Valid @RequestBody SalaryRequest request) {
-        return new ResponseEntity<>(salaryOperation.process(request), HttpStatus.ACCEPTED);
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "202", description = "Successfully gave a salary to an employee."),
+//            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content(mediaType = "text/html"))
+//    })
+//    @Operation(description = "Provided the employees debit card details will provide him with his deserved salary.",
+//            summary = "Give salary to an employee.")
+//    @PostMapping(path = "/salary")
+//    public ResponseEntity<SalaryResponse> giveSalary(@Valid @RequestBody SalaryRequest request) {
+//        return new ResponseEntity<>(salaryOperation.process(request), HttpStatus.ACCEPTED);
+//    }
+
+    private final PaypalService paypalService;
+
+    @GetMapping("/")
+    public String home(){
+        return "index";
+    }
+
+    @PostMapping("/create")
+    public RedirectView createPayment(@RequestParam("method") String method, //paypal
+                                      @RequestParam("amount") String amount,
+                                      @RequestParam("currency") String currency, //USD
+                                      @RequestParam("description") String description) {
+        try {
+            String cancelUrl = "http://localhost:8080/payment/cancel";
+            String successUrl = "http://localhost:8080/payment/success";
+            Payment payment = paypalService.createPayment(Double.valueOf(amount), currency, method, "sale", description, cancelUrl, successUrl);
+
+            for (Links links : payment.getLinks()) {
+                if (links.getRel().equals("approval_url")) {
+                    return new RedirectView(links.getHref());
+                }
+            }
+
+        } catch (PayPalRESTException e) {
+            log.error("Error occurred during payment", e);
+        }
+        return new RedirectView("/payment/error");
+    }
+
+    @GetMapping("/success")
+    public String paymentSuccess(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
+        try {
+            Payment payment = paypalService.executePayment(paymentId, payerId);
+            if (payment.getState().equals("approved")) {
+                return "paymentSuccess";
+            }
+        } catch (PayPalRESTException e) {
+            log.error("Error occurred during payment", e);
+        }
+        return "paymentSuccess";
+    }
+
+    @GetMapping("/cancel")
+    public String paymentCancel() {
+        return "paymentCancel";
+    }
+
+    @GetMapping("/error")
+    public String paymentError() {
+        return "paymentCancel";
     }
 }
