@@ -56,8 +56,8 @@ public class PaymentController {
                                       @RequestParam("currency") String currency, //USD
                                       @RequestParam("description") String description) {
         try {
-            String cancelUrl = "http://localhost:8080/payment/cancel";
-            String successUrl = "http://localhost:8080/payment/success";
+            String cancelUrl = "http://localhost:8081/payment/cancel";
+            String successUrl = "http://localhost:8081/payment/success";
             Payment payment = paypalService.createPayment(Double.valueOf(amount), currency, method, "sale", description, cancelUrl, successUrl);
 
             for (Links links : payment.getLinks()) {
@@ -73,7 +73,8 @@ public class PaymentController {
     }
 
     @GetMapping("/success")
-    public String paymentSuccess(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
+    public String paymentSuccess(@RequestParam("paymentId") String paymentId,
+                                 @RequestParam("PayerID") String payerId) {
         try {
             Payment payment = paypalService.executePayment(paymentId, payerId);
             if (payment.getState().equals("approved")) {
@@ -92,6 +93,6 @@ public class PaymentController {
 
     @GetMapping("/error")
     public String paymentError() {
-        return "paymentCancel";
+        return "paymentError";
     }
 }
