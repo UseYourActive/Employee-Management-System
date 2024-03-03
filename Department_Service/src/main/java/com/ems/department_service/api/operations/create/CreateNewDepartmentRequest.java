@@ -27,7 +27,7 @@ public class CreateNewDepartmentRequest implements OperationInput {
     @NotNull(message = "Budget must not be null")
     @ValidBigDecimal
     @Schema(description = "Budget of the department", example = "10000.00")
-    private BigDecimal budget;
+    private String budget;
 
     @NotBlank(message = "Location must not be blank")
     @Schema(description = "Location of the department", example = "New York")
