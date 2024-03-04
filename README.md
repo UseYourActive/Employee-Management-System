@@ -36,4 +36,8 @@ This project is a comprehensive Employee Management System built using Spring Bo
 
 - **Leave Service:** Facilitates leave management functionalities, allowing for easy tracking and management of employee leave requests.
 
-This Employee Management System is designed to be robust, scalable, and feature-rich, providing comprehensive functionality to effectively manage employee-related operations within an organization.
+- **Asset Service:** Responsible for managing company assets, including procurement, allocation, and tracking.
+
+- **Attendance Service:** Handles attendance tracking and management for employees, ensuring accurate records of work hours.
+
+- **Training and Development Service:** Manages employee training programs and career development initiatives, facilitating skill enhancement and career growth opportunities.
