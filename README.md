@@ -28,7 +28,7 @@ This project is a comprehensive Employee Management System built using Spring Bo
 
 - **Chat Service:** Enables real-time chat functionality among logged-in users, leveraging Websockets for efficient communication.
 
-## Personal Microservices:
+## Project Specific Microservices:
 
 - **Employee Service:** Handles operations related to employees within the system.
 
