@@ -21,14 +21,60 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    set('springCloudVersion', "2023.0.0")
+}
+
 dependencies {
+    //region Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    //endregion
+
+    //region Database
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'org.postgresql:postgresql'
+    //endregion
+
+    //region Tests
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //endregion
+
+    //region Communication
+    // Kafka
+    implementation group: 'org.springframework.kafka', name: 'spring-kafka', version: '3.1.1'
+    implementation 'org.apache.kafka:kafka-clients:3.6.1'
+
+    // OpenFeign Client
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    //endregion
+
+    //region Utils
+    // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // Dev Tools
+    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '3.2.2'
 
+    // Diagnostics
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Mappers
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // Documentation
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.3.0'
+    //endregion
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 tasks.named('test') {
