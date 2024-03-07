@@ -1,4 +1,4 @@
-package com.ems.attendance_service;
+package com.ems.attendance_service.persistence.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

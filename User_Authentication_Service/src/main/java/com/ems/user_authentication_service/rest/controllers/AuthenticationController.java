@@ -22,17 +22,19 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
-@RestController
 @RequiredArgsConstructor
+@RestController
 @Validated
-@RequestMapping("/auth")
+@RefreshScope
+@Slf4j
 @CrossOrigin
+@RequestMapping("/auth")
 public class AuthenticationController {
     private final RegisterOperation registerOperation;
     private final LoginOperation loginOperation;

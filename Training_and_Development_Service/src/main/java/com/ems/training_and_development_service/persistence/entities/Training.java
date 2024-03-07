@@ -1,25 +1,29 @@
-package com.ems.asset_service;
+package com.ems.training_and_development_service.persistence.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity
-@Table(name = "assets")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Asset {
+@Entity
+@Table(name = "trainings")
+public class Training {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String name;
+    private String title;
 
     private String description;
 
-    private String serialNumber;
+    private LocalDate startDate;
+
+    private LocalDate endDate;
 }
+
