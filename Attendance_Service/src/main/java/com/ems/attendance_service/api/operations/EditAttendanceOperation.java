@@ -6,20 +6,20 @@ import com.ems.attendance_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface EditAttendanceOperation extends OperationProcessor<EditAttendanceOperation.EditAttendanceResponse, EditAttendanceOperation.EditAttendanceRequest> {
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class EditAttendanceResponse implements OperationOutput {
 
     }
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class EditAttendanceRequest implements OperationInput {
 
     }

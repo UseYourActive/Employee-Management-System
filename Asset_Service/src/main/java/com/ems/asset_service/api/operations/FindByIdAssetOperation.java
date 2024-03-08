@@ -7,11 +7,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 public interface FindByIdAssetOperation extends OperationProcessor<FindByIdAssetOperation.FindByIdAssetResponse, FindByIdAssetOperation.FindByIdAssetRequest> {
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class FindByIdAssetResponse implements OperationOutput  {
 
     }

@@ -6,11 +6,11 @@ import com.ems.attendance_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface FindAllAttendancesOperation extends OperationProcessor<FindAllAttendancesOperation.FindAllAttendancesResponse, FindAllAttendancesOperation.FindAllAttendancesRequest> {
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class FindAllAttendancesResponse implements OperationOutput {
 
     }

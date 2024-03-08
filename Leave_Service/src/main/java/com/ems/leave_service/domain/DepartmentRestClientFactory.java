@@ -2,8 +2,8 @@ package com.ems.leave_service.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Feign;
-import feign.jackson.JacksonDecoder;
-import feign.jackson.JacksonEncoder;
+//import feign.jackson.JacksonDecoder;
+//import feign.jackson.JacksonEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

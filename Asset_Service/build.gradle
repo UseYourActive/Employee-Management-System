@@ -23,9 +23,12 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2023.0.0")
+	attendance_revision = '1.0.0'
 }
 
 dependencies {
+	implementation "com.ems.attendance_service:export:$attendance_revision" // Adding personal microservices here
+
 	//region Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	//endregion
@@ -69,6 +72,8 @@ dependencies {
 	// Documentation
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.3.0'
 	//endregion
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 }
 
 dependencyManagement {

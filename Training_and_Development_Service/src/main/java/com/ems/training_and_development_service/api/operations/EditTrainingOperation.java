@@ -6,20 +6,20 @@ import com.ems.training_and_development_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface EditTrainingOperation extends OperationProcessor<EditTrainingOperation.EditTrainingResponse, EditTrainingOperation.EditTrainingRequest> {
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class EditTrainingResponse implements OperationOutput {
 
     }
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class EditTrainingRequest implements OperationInput {
 
     }

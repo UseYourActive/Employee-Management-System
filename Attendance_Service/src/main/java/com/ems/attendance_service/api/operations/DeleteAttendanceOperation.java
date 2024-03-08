@@ -6,11 +6,11 @@ import com.ems.attendance_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface DeleteAttendanceOperation extends OperationProcessor<DeleteAttendanceOperation.DeleteAttendanceResponse, DeleteAttendanceOperation.DeleteAttendanceRequest> {
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class DeleteAttendanceResponse implements OperationOutput {
 
     }

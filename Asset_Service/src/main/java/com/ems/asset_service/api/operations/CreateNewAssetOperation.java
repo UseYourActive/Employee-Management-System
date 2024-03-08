@@ -6,20 +6,20 @@ import com.ems.asset_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface CreateNewAssetOperation extends OperationProcessor<CreateNewAssetOperation.CreateNewAssetResponse, CreateNewAssetOperation.CreateNewAssetRequest> {
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class CreateNewAssetResponse implements OperationOutput {
 
     }
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class CreateNewAssetRequest implements OperationInput {
 
     }

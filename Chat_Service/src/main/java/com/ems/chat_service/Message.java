@@ -1,6 +1,5 @@
 package com.ems.chat_service;
 
-import com.bhh.user_authentication_service.persistence.enums.Status;
 import lombok.*;
 
 @Getter

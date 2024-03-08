@@ -6,11 +6,11 @@ import com.ems.asset_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface FindAllAssetsOperation extends OperationProcessor<FindAllAssetsOperation.FindAllAssetsResponse, FindAllAssetsOperation.FindAllAssetsRequest> {
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class FindAllAssetsResponse implements OperationOutput  {
 
     }

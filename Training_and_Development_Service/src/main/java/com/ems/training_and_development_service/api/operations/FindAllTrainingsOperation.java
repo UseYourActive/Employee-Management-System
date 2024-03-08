@@ -6,11 +6,11 @@ import com.ems.training_and_development_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface FindAllTrainingsOperation extends OperationProcessor<FindAllTrainingsOperation.FindAllTrainingsResponse, FindAllTrainingsOperation.FindAllTrainingsRequest> {
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
+//    @Getter
+//    @Setter
+//    @NoArgsConstructor
+//    @AllArgsConstructor
+//    @Builder
     class FindAllTrainingsResponse implements OperationOutput {
 
     }

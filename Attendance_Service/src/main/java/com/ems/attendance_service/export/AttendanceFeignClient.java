@@ -1,6 +1,5 @@
 package com.ems.attendance_service.export;
 
-import com.ems.attendance_service.api.operations.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
