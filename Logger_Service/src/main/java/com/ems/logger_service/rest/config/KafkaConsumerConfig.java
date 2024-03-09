@@ -13,17 +13,17 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig {
 
-    @Bean
-    public ConsumerFactory<String, EmployeeEvent> consumerFactory() {
-        Map<String, Object> configProps = new HashMap<>();
-        return new DefaultKafkaConsumerFactory<>(configProps);
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, EmployeeEvent> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, EmployeeEvent> factory =
-                new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
-        return factory;
-    }
+//    @Bean
+//    public ConsumerFactory<String, EmployeeEvent> consumerFactory() {
+//        Map<String, Object> configProps = new HashMap<>();
+//        return new DefaultKafkaConsumerFactory<>(configProps);
+//    }
+//
+//    @Bean
+//    public ConcurrentKafkaListenerContainerFactory<String, EmployeeEvent> kafkaListenerContainerFactory() {
+//        ConcurrentKafkaListenerContainerFactory<String, EmployeeEvent> factory =
+//                new ConcurrentKafkaListenerContainerFactory<>();
+//        factory.setConsumerFactory(consumerFactory());
+//        return factory;
+//    }
 }

@@ -22,7 +22,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
+    //region Spring Boot
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //endregion
+
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
