@@ -18,7 +18,7 @@ public interface CreateNewTrainingOperation extends OperationProcessor<CreateNew
     @Builder
     class CreateNewTrainingResponse implements OperationOutput {
         @Schema(description = "ID of the training", example = "123e4567-e89b-12d3-a456-556642440000")
-        private UUID id;
+        private String id;
 
         @Schema(description = "Title of the training", example = "Java Programming")
         private String title;
@@ -47,11 +47,11 @@ public interface CreateNewTrainingOperation extends OperationProcessor<CreateNew
         @NotBlank(message = "Description is required")
         private String description;
 
-        @Schema(description = "Start date of the training", example = "2024-03-10T10:00:00")
+        @Schema(description = "Start date of the training", example = "2024-03-10")
         @NotBlank(message = "Start date is required")
         private String startDate;
 
-        @Schema(description = "End date of the training", example = "2024-03-15T16:00:00")
+        @Schema(description = "End date of the training", example = "2024-03-15")
         @NotBlank(message = "End date is required")
         private String endDate;
     }
