@@ -6,13 +6,16 @@ import com.ems.attendance_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface FindByIdAttendanceOperation extends OperationProcessor<FindByIdAttendanceOperation.FindByIdAttendanceResponse, FindByIdAttendanceOperation.FindByIdAttendanceRequest> {
-//    @Getter
-//    @Setter
-//    @NoArgsConstructor
-//    @AllArgsConstructor
-//    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
     class FindByIdAttendanceResponse implements OperationOutput {
-
+    private String id;
+    private String employeeId;
+    private String checkInTime;
+    private String checkOutTime;
     }
 
     @Getter

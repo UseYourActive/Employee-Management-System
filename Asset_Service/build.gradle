@@ -27,7 +27,8 @@ ext {
 }
 
 dependencies {
-	implementation "com.ems.attendance_service:export:$attendance_revision" // Adding personal microservices here
+//	implementation "com.ems.attendance_service:export:$attendance_revision" // Adding personal microservices here
+//	implementation project(":com.ems.department_service:export:$attendance_revision")
 
 	//region Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-web'

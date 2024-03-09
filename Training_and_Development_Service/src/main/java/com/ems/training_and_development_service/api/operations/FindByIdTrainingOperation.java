@@ -6,13 +6,17 @@ import com.ems.training_and_development_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface FindByIdTrainingOperation extends OperationProcessor<FindByIdTrainingOperation.FindByIdTrainingResponse, FindByIdTrainingOperation.FindByIdTrainingRequest> {
-//    @Getter
-//    @Setter
-//    @NoArgsConstructor
-//    @AllArgsConstructor
-//    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
     class FindByIdTrainingResponse implements OperationOutput {
-
+    private String id;
+    private String title;
+    private String description;
+    private String startDate;
+    private String endDate;
     }
 
     @Getter

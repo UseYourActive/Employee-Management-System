@@ -6,13 +6,13 @@ import com.ems.asset_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface DeleteAssetOperation extends OperationProcessor<DeleteAssetOperation.DeleteAssetResponse, DeleteAssetOperation.DeleteAssetRequest> {
-//    @Getter
-//    @Setter
-//    @NoArgsConstructor
-//    @AllArgsConstructor
-//    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
     class DeleteAssetResponse implements OperationOutput {
-
+        private Boolean isSuccessfullyDeleted;
     }
 
     @Getter

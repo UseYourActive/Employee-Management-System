@@ -6,13 +6,13 @@ import com.ems.training_and_development_service.api.base.OperationProcessor;
 import lombok.*;
 
 public interface DeleteTrainingOperation extends OperationProcessor<DeleteTrainingOperation.DeleteTrainingResponse, DeleteTrainingOperation.DeleteTrainingRequest> {
-//    @Getter
-//    @Setter
-//    @NoArgsConstructor
-//    @AllArgsConstructor
-//    @Builder
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
     class DeleteTrainingResponse implements OperationOutput {
-
+        private Boolean isSuccessfullyDeleted;
     }
 
     @Getter
