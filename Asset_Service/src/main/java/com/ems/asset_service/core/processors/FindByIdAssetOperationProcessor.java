@@ -30,10 +30,12 @@ public class FindByIdAssetOperationProcessor implements FindByIdAssetOperation {
         log.info("Found asset with ID {}: {}", id, asset);
 
         return FindByIdAssetResponse.builder()
-                .description(asset.getDescription())
                 .id(String.valueOf(asset.getId()))
                 .name(asset.getName())
                 .serialNumber(asset.getSerialNumber())
+                .description(asset.getDescription())
+                .assetStatus(String.valueOf(asset.getAssetStatus()))
+                .assetType(String.valueOf(asset.getAssetType()))
                 .build();
     }
 }

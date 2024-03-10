@@ -23,7 +23,7 @@ public class FindAllAssetsOperationProcessor implements FindAllAssetsOperation {
 
         PageRequest pageRequest = PageRequest.of(
                 request.getPageNumber(),
-                request.getNumberOfBooksPerPage());
+                request.getNumberOfAssetsPerPage());
 
         log.debug("Fetching assets from database with page request: {}", pageRequest);
 
@@ -42,9 +42,11 @@ public class FindAllAssetsOperationProcessor implements FindAllAssetsOperation {
     private FindAllAssetsResponseDTO map(Asset asset){
         return FindAllAssetsResponseDTO.builder()
                 .id(String.valueOf(asset.getId()))
-                .description(asset.getDescription())
                 .name(asset.getName())
                 .serialNumber(asset.getSerialNumber())
+                .description(asset.getDescription())
+                .assetStatus(String.valueOf(asset.getAssetStatus()))
+                .assetType(String.valueOf(asset.getAssetType()))
                 .build();
     }
 }

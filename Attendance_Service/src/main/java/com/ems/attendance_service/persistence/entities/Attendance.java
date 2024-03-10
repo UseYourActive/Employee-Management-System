@@ -18,10 +18,12 @@ public class Attendance {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(name = "employee_id", nullable = false)
     private UUID employeeId;
 
+    @Column(name = "check_in_time", nullable = false)
     private LocalDateTime checkInTime;
 
+    @Column(name = "check_out_time")
     private LocalDateTime checkOutTime;
 }
-

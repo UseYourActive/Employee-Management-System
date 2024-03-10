@@ -2,6 +2,8 @@ package com.ems.asset_service.core.processors;
 
 import com.ems.asset_service.api.operations.CreateNewAssetOperation;
 import com.ems.asset_service.persistence.entities.Asset;
+import com.ems.asset_service.persistence.enums.AssetStatus;
+import com.ems.asset_service.persistence.enums.AssetType;
 import com.ems.asset_service.persistence.repositories.AssetRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,7 @@ public class CreateNewAssetOperationProcessor implements CreateNewAssetOperation
         String name = request.getName();
         String description = request.getDescription();
         String serialNumber = request.getSerialNumber();
+        String assetType = request.getAssetType();
 
         log.debug("Creating asset with name: {}, description: {}, serial number: {}", name, description, serialNumber);
 
@@ -27,6 +30,8 @@ public class CreateNewAssetOperationProcessor implements CreateNewAssetOperation
                 .description(description)
                 .serialNumber(serialNumber)
                 .name(name)
+                .assetStatus(AssetStatus.AVAILABLE)
+                .assetType(AssetType.valueOf(assetType))
                 .build();
 
         Asset persistedAsset = assetRepository.save(asset);
@@ -38,6 +43,8 @@ public class CreateNewAssetOperationProcessor implements CreateNewAssetOperation
                 .name(persistedAsset.getName())
                 .serialNumber(persistedAsset.getSerialNumber())
                 .description(persistedAsset.getDescription())
+                .assetStatus(String.valueOf(persistedAsset.getAssetStatus()))
+                .assetType(String.valueOf(persistedAsset.getAssetType()))
                 .build();
     }
 }

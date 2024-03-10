@@ -3,6 +3,8 @@ package com.ems.asset_service.core.processors;
 import com.ems.asset_service.api.operations.EditAssetOperation;
 import com.ems.asset_service.core.exceptions.AssetNotFoundException;
 import com.ems.asset_service.persistence.entities.Asset;
+import com.ems.asset_service.persistence.enums.AssetStatus;
+import com.ems.asset_service.persistence.enums.AssetType;
 import com.ems.asset_service.persistence.repositories.AssetRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,8 @@ public class EditAssetOperationProcessor implements EditAssetOperation {
         String name = request.getName();
         String description = request.getDescription();
         String serialNumber = request.getSerialNumber();
+        String assetStatus = request.getAssetStatus();
+        String assetType = request.getAssetType();
 
         Optional<Asset> optionalAsset = assetRepository.findById(UUID.fromString(id));
         Asset asset = optionalAsset.orElseThrow(AssetNotFoundException::new);
@@ -44,6 +48,16 @@ public class EditAssetOperationProcessor implements EditAssetOperation {
                 log.debug("Updating serial number for asset with ID {}: {}", id, sn);
                 a.setSerialNumber(sn);
             });
+
+            Optional.ofNullable(assetStatus).ifPresent(n -> {
+                log.debug("Updating status for asset with ID {}: {}", id, n);
+                a.setAssetStatus(AssetStatus.valueOf(n));
+            });
+
+            Optional.ofNullable(assetType).ifPresent(n -> {
+                log.debug("Updating type for asset with ID {}: {}", id, n);
+                a.setAssetType(AssetType.valueOf(n));
+            });
         });
 
         Asset persistedAsset = assetRepository.save(asset);
@@ -52,9 +66,11 @@ public class EditAssetOperationProcessor implements EditAssetOperation {
 
         return EditAssetResponse.builder()
                 .id(String.valueOf(persistedAsset.getId()))
-                .description(persistedAsset.getDescription())
                 .name(persistedAsset.getName())
                 .serialNumber(persistedAsset.getSerialNumber())
+                .description(persistedAsset.getDescription())
+                .assetStatus(String.valueOf(persistedAsset.getAssetStatus()))
+                .assetType(String.valueOf(persistedAsset.getAssetType()))
                 .build();
     }
 }

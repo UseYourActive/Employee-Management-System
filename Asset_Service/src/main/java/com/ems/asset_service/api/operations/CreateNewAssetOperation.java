@@ -28,6 +28,12 @@ public interface CreateNewAssetOperation extends OperationProcessor<CreateNewAss
 
         @Schema(description = "Serial number of the asset")
         private String serialNumber;
+
+        @Schema(description = "Type of the asset")
+        private String assetType;
+
+        @Schema(description = "Status of the asset")
+        private String assetStatus;
     }
 
     @Getter
@@ -48,5 +54,9 @@ public interface CreateNewAssetOperation extends OperationProcessor<CreateNewAss
         @Schema(description = "Serial number of the asset", required = true)
         @NotBlank(message = "Serial number must not be blank")
         private String serialNumber;
+
+        @Schema(description = "Type of the asset", required = true)
+        @NotBlank(message = "Type must not be blank")
+        private String assetType;
     }
 }

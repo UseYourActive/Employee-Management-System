@@ -4,6 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static com.ems.asset_service.api.operations.AssignAssetToEmployeeOperation.*;
 import static com.ems.asset_service.api.operations.CreateNewAssetOperation.*;
 import static com.ems.asset_service.api.operations.DeleteAssetOperation.*;
 import static com.ems.asset_service.api.operations.EditAssetOperation.*;
@@ -27,4 +28,7 @@ public interface AssetFeignClient {
 
     @DeleteMapping(path = "/asset/{id}")
     ResponseEntity<DeleteAssetResponse> deleteAsset(@PathVariable("id") String id);
+
+    @PutMapping(path = "/asset/assign-to-employee")
+    ResponseEntity<AssignAssetToEmployeeResponse> assignAssetToEmployee(@RequestBody AssignAssetToEmployeeRequest request);
 }

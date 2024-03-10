@@ -25,6 +25,12 @@ public interface FindByIdAssetOperation extends OperationProcessor<FindByIdAsset
 
         @Schema(description = "Serial number of the asset")
         private String serialNumber;
+
+        @Schema(description = "Type of the asset")
+        private String assetType;
+
+        @Schema(description = "Status of the asset")
+        private String assetStatus;
     }
 
     @Getter

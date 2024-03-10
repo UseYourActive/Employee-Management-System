@@ -14,10 +14,10 @@ public class DepartmentRestClientFactory {
     private final ObjectMapper objectMapper;
 
 //    @Bean
-//    public ZooStoreRestClient getRestExportClient() {
+//    public DepartmentFeignClient getRestExportClient() {
 //        return Feign.builder()
 //                .encoder(new JacksonEncoder(objectMapper))
 //                .decoder(new JacksonDecoder(objectMapper))
-//                .target(ZooStoreRestClient.class, "http://localhost:8081");
+//                .target(DepartmentFeignClient.class, "http://localhost:8088");
 //    }
 }

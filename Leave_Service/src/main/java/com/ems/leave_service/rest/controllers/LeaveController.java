@@ -1,11 +1,13 @@
 package com.ems.leave_service.rest.controllers;
 
+import com.ems.leave_service.api.operations.approve_leave.ApproveLeaveOperation;
 import com.ems.leave_service.api.operations.find.leave.all.FindAllLeavesOperation;
 import com.ems.leave_service.api.operations.find.leave.by_employee_id.FindByEmployeeIdOperation;
 import com.ems.leave_service.api.operations.find.leave.by_employee_id_and_status.FindByEmployeeIdAndStatusOperation;
 import com.ems.leave_service.api.operations.find.leave.by_start_between_dates.FindByStartBetweenDatesOperation;
 import com.ems.leave_service.api.operations.find.leave.by_status.FindByStatusOperation;
 import com.ems.leave_service.api.operations.find.leave.leaves_by_employee_id_and_date_range.FindLeavesByEmployeeIdAndDateRangeOperation;
+import com.ems.leave_service.api.operations.reject_leave.RejectLeaveOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +33,9 @@ public class LeaveController {
     private final FindByEmployeeIdOperation findByEmployeeIdOperation;
     private final FindByEmployeeIdAndStatusOperation findByEmployeeIdAndStatusOperation;
     private final FindByStartBetweenDatesOperation findByStartBetweenDatesOperation;
-    private final FindByStatusOperation findByStatusOperation;
     private final FindLeavesByEmployeeIdAndDateRangeOperation findLeavesByEmployeeIdAndDateRangeOperation;
+    private final ApproveLeaveOperation approveLeaveOperation;
+    private final RejectLeaveOperation rejectLeaveOperation;
 
     //region GET
     //endregion

@@ -1,5 +1,7 @@
 package com.ems.asset_service.persistence.entities;
 
+import com.ems.asset_service.persistence.enums.AssetStatus;
+import com.ems.asset_service.persistence.enums.AssetType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,9 +19,23 @@ public class Asset {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(name = "employee_id")
+    private UUID employeeId;
+
+    @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "serial_number", nullable = false)
     private String serialNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "asset_type", nullable = false)
+    private AssetType assetType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "asset_status", nullable = false)
+    private AssetStatus assetStatus;
 }

@@ -34,6 +34,7 @@ public class AssetController {
     private final FindAllAssetsOperation findAllAssetsOperation;
     private final DeleteAssetOperation deleteAssetOperation;
     private final EditAssetOperation editAssetOperation;
+    private final AssignAssetToEmployeeOperation assignAssetToEmployeeOperation;
 
     //region GET
     @Transactional
@@ -64,7 +65,7 @@ public class AssetController {
                                                                                       @RequestParam(defaultValue = "2") Integer numberOfBooksPerPage) {
         FindAllAssetsOperation.FindAllAssetsRequest request = FindAllAssetsOperation.FindAllAssetsRequest.builder()
                 .pageNumber(pageNumber)
-                .numberOfBooksPerPage(numberOfBooksPerPage)
+                .numberOfAssetsPerPage(numberOfBooksPerPage)
                 .build();
 
         return new ResponseEntity<>(findAllAssetsOperation.process(request), HttpStatus.OK);
@@ -96,6 +97,18 @@ public class AssetController {
     @PatchMapping(path = "/edit")
     public ResponseEntity<EditAssetOperation.EditAssetResponse> editAsset(@Valid @RequestBody EditAssetOperation.EditAssetRequest request) {
         return new ResponseEntity<>(editAssetOperation.process(request), HttpStatus.OK);
+    }
+
+    @Transactional
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully assigned a asset to employee."),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content(mediaType = "text/html"))
+    })
+    @Operation(description = "From the users request assigns a certain asset stored in the database to a employee.",
+            summary = "Assign asset to an employee.")
+    @PutMapping(path = "/assign-to-employee")
+    public ResponseEntity<AssignAssetToEmployeeOperation.AssignAssetToEmployeeResponse> assignAssetToEmployee(@Valid @RequestBody AssignAssetToEmployeeOperation.AssignAssetToEmployeeRequest request) {
+        return new ResponseEntity<>(assignAssetToEmployeeOperation.process(request), HttpStatus.OK);
     }
     //endregion
 
