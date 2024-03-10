@@ -1,5 +1,6 @@
 package com.ems.logger_service.rest.controllers;
 
+import com.ems.logger_service.core.processors.ChronologyService;
 import com.ems.logger_service.persistence.entities.ChronologyFilter;
 import com.ems.logger_service.persistence.entities.IndexVM;
 import com.ems.logger_service.persistence.entities.MessageLog;
@@ -24,7 +25,7 @@ public class KafkaController {
             @ApiResponse(responseCode = "200", description = "Successfully, returns list of countries.")})
     @PostMapping("/getAll")
     public ResponseEntity<IndexVM<MessageLog>> getAll(@RequestBody ChronologyFilter chronologyFilter) {
-        return ResponseEntity.ok(chronologyService.gerChronology(chronologyFilter));
+        return ResponseEntity.ok(chronologyService.getChronology(chronologyFilter));
     }
 
     @Operation(summary = "Gets types of logs.",

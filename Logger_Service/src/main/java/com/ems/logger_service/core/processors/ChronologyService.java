@@ -6,6 +6,7 @@ import com.ems.logger_service.persistence.entities.IndexVM;
 import com.ems.logger_service.persistence.entities.MessageLog;
 import com.ems.logger_service.persistence.enums.Type;
 import com.ems.logger_service.persistence.repositories.ChronologyRepository;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Service
+@Getter
 public class ChronologyService {
     private final ChronologyRepository chronologyRepository;
 
@@ -26,7 +28,7 @@ public class ChronologyService {
         chronologyRepository.save(chronology);
     }
 
-    public IndexVM<MessageLog> gerChronology(ChronologyFilter filter) {
+    public IndexVM<MessageLog> getChronology(ChronologyFilter filter) {
         Page<Chronology> page = chronologyRepository.findChronologyByFilter(filter.email(), filter.createdAfter(), filter.createdBefore(),
                 filter.type() == null ? "" : filter.type().getLabel(), PageRequest.of(filter.page(), filter.pageSize()));
 
