@@ -29,6 +29,8 @@ ext {
 dependencies {
 //	implementation "com.ems.attendance_service:export:$attendance_revision" // Adding personal microservices here
 //	implementation project(":com.ems.department_service:export:$attendance_revision")
+	testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.11.0'
+
 
 	//region Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-web'

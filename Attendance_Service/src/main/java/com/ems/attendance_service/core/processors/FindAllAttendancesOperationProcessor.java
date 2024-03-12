@@ -24,7 +24,7 @@ public class FindAllAttendancesOperationProcessor implements FindAllAttendancesO
 
         PageRequest pageRequest = PageRequest.of(
                 request.getPageNumber(),
-                request.getNumberOfBooksPerPage());
+                request.getNumberOfAttendancesPerPage());
 
         log.debug("Fetching attendances from repository with page request: {}", pageRequest);
 

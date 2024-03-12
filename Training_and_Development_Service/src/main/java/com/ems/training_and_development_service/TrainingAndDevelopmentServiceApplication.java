@@ -18,7 +18,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableFeignClients
 @OpenAPIDefinition(
         info = @Info(
-                title = "User Authentication Service Documentation",
+                title = "Training and Development Service Documentation",
                 description = "This is a documentation for my User authentication service",
                 version = "v1.0",
                 contact = @Contact(

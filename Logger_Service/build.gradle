@@ -21,6 +21,10 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    set('springCloudVersion', "2023.0.0")
+}
+
 dependencies {
     //region Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -37,6 +41,12 @@ dependencies {
     implementation group: 'org.springframework.kafka', name: 'spring-kafka', version: '3.1.1'
     implementation 'org.apache.kafka:kafka-clients:3.6.1'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 tasks.named('test') {

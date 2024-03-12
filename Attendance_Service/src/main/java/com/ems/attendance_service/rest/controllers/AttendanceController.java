@@ -64,7 +64,7 @@ public class AttendanceController {
                                                                                                      @RequestParam(defaultValue = "2") Integer numberOfBooksPerPage) {
         FindAllAttendancesOperation.FindAllAttendancesRequest request = FindAllAttendancesOperation.FindAllAttendancesRequest.builder()
                 .pageNumber(pageNumber)
-                .numberOfBooksPerPage(numberOfBooksPerPage)
+                .numberOfAttendancesPerPage(numberOfBooksPerPage)
                 .build();
 
         return new ResponseEntity<>(findAllAttendancesOperation.process(request), HttpStatus.OK);
