@@ -26,11 +26,17 @@ ext {
 	attendance_revision = '1.0.0'
 }
 
+jar {
+	include('com/ems/asset_service/export/*')
+	archiveFileName = 'Department_Service-0.0.1-SNAPSHOT.jar'
+	destinationDirectory.set(file("$buildDir/../../libs:"))
+}
+
 dependencies {
 //	implementation "com.ems.attendance_service:export:$attendance_revision" // Adding personal microservices here
 //	implementation project(":com.ems.department_service:export:$attendance_revision")
 	testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.11.0'
-
+	implementation files('../libs/Department_Service-0.0.1-SNAPSHOT.jar')
 
 	//region Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-web'

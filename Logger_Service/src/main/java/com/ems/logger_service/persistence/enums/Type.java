@@ -10,7 +10,6 @@ public enum Type {
     LOGIN("Login in the system!"),
     WRONG_PASSWORD("Wrong password!"),
     SEND_PASSWORD_CHANGE("Password change email send!"),
-    SEND_PASSPORT_UPDATE("Passport update notify send!"),
     PROFILE_ACTIVATE("Profile activated!"),
     LOGIN_INACTIVE_PROFILE("Tried to login in inactive profile!"),
     ALREADY_EXISTING_PROFILE("Tried to register already registered profile!"),
